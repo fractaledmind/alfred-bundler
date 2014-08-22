@@ -40,8 +40,12 @@ set BUNDLER_LOGFILE to my _format((DATA_DIR & "/logs/bundler-{}.log"), BUNDLER_V
 property _bundler : missing value
 
 
+<<<<<<< HEAD
 --my _bootstrap()
 do shell script ". \"/Users/smargheim/Library/Caches/com.runningwithcrayons.Alfred-2/Workflow Data/alfred.bundler-devel/bundlet-temp.sh\""
+=======
+my _bootstrap()
+>>>>>>> devel
 
 --set BASH_BUNDLET to my _pwd() & "alfred.bundler.sh"
 --set test to APPLESCRIPT_LIB_DIR & "/bundlet-test.sh"
@@ -91,10 +95,15 @@ on _bootstrap()
 			on error emsg number num
 				set msg to "Error downloading `" & BASH_BUNDLET_URL & "` to `{}`"
 				my _log("_bootstrap", "DEBUG", my _format(msg, bundlet_path))
+<<<<<<< HEAD
 				error emsg number num
 			end try
 			my _log("_bootstrap", "INFO", my _format("Executing script : `{}`", bash_code))
 			return bash_code
+=======
+				return emsg
+			end try
+>>>>>>> devel
 		else
 			
 		end if
@@ -144,7 +153,11 @@ on _download(_url, _filepath)
 		end if
 	on error msg number num
 		set error_msg to "Applescript Error: <" & msg & "> Number: [" & num & "]"
+<<<<<<< HEAD
 		my _log("_download", "DEBUG", error_msg)
+=======
+		set error_msg to my _log("_download", "DEBUG", error_msg)
+>>>>>>> devel
 		error msg number num
 	end try
 end _download
